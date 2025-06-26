@@ -1,0 +1,90 @@
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+
+	z-index: 1000;
+	transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out,
+		backdrop-filter 0.3s ease-in-out;
+	background-color: transparent;
+}
+
+/* When scrolled down */
+header.scrolled {
+	background-color: rgba(255, 255, 255, 0.95);
+	backdrop-filter: blur(10px);
+	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* When scrolling down - hide nav */
+header.hidden {
+	transform: translateY(-100%);
+}
+
+.nav-container {
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 10px 30px;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav-logo {
+	width: 160px;
+}
+
+.nav-logo img {
+	width: 100%;
+}
+
+.nav-links ul {
+	display: flex;
+	list-style: none;
+	gap: 24px;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-links ul a {
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 0.875rem;
+	color: var(--header-text);
+	transition: color 0.3s ease;
+}
+
+.nav-links ul a:hover {
+	color: var(--primary);
+}
+
+.nav-container .nav-download-btn {
+	background-color: var(--primary);
+	padding: 8px 8px 8px 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	border: none;
+	border-radius: 36px;
+	font-weight: 500;
+	font-size: 1rem;
+	color: #fff;
+	transition: background-color 0.3s ease;
+}
+
+.nav-download-btn:hover {
+	background-color: #045a6f;
+}
+
+.nav-download-btn .arrow-container {
+	width: 40px;
+	height: 40px;
+	background-color: var(--secondary);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
