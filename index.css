@@ -395,6 +395,10 @@ details > summary::-webkit-details-marker {
 	#cta {
 		padding: 20px 0 40px;
 	}
+
+	.user-design-container {
+		padding: 20px 0 0;
+	}
 }
 
 @media (max-width: 580px) {
