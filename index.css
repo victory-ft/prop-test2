@@ -87,7 +87,7 @@ button {
 	color: var(--body-text);
 	text-align: center;
 	font-size: 1.25rem;
-	max-width: 600px;
+	max-width: 750px;
 	margin: 0 auto;
 }
 
@@ -301,6 +301,7 @@ button {
 .faq-question {
 	width: 100%;
 	background: none;
+	border-radius: 8px;
 	border: none;
 	padding: 1.5rem;
 	text-align: left;
@@ -312,7 +313,6 @@ button {
 	justify-content: space-between;
 	align-items: center;
 	transition: background-color 0.2s ease;
-	overflow: hidden;
 }
 
 .faq-question:hover {
