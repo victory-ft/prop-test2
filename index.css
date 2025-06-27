@@ -153,7 +153,7 @@ button {
 .features-container {
 	margin: 40px 0;
 	display: flex;
-	align-items: stretch;
+	align-items: start;
 	justify-content: center;
 	gap: 40px;
 	flex-wrap: wrap;
@@ -357,4 +357,62 @@ details > summary {
 
 details > summary::-webkit-details-marker {
 	display: none;
+}
+
+@media (max-width: 1199px) {
+	.cta-container {
+		margin: 0 20px;
+	}
+}
+
+@media (max-width: 900px) {
+	.user-design {
+		flex-direction: column;
+	}
+}
+
+@media (max-width: 580px) {
+	#faq {
+		padding: 40px 20px;
+	}
+	.cta-container {
+		padding: 20px;
+	}
+}
+
+@media (max-width: 480px) {
+	.hero-image-container {
+		width: 300px;
+		height: 390px;
+		margin: 0 auto;
+		padding: 0;
+	}
+
+	.store-download-container {
+		flex-wrap: wrap-reverse;
+	}
+
+	.hero-header,
+	.hero-header.cta {
+		font-size: 2.5rem;
+	}
+
+	.hero-subheader {
+		font-size: 1.125rem;
+	}
+
+	.user-features h2 {
+		font-size: 1.875rem;
+	}
+
+	.user-image-container {
+		width: 200px;
+	}
+
+	.process-text,
+	.user-features li,
+	.faq-answer,
+	.faq-question {
+		font-size: 1rem;
+	}
 }
