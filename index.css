@@ -60,8 +60,8 @@ button {
 	margin-bottom: 0;
 
 	background: linear-gradient(
-			rgba(255, 255, 255, 0.75),
-			rgba(255, 255, 255, 0.75)
+			rgba(255, 255, 255, 0.7),
+			rgba(255, 255, 255, 0.7)
 		),
 		url("/assets/images/heading-mask.png");
 
@@ -226,10 +226,14 @@ button {
 	max-width: 550px;
 }
 
-.user-features li:before {
+.user-features li img {
+	margin-right: 15px;
+}
+
+/* .user-features li:before {
 	content: url(/assets/icons/check.svg);
 	padding-right: 10px;
-}
+} */
 
 #how-it-works {
 	padding: 80px 0;
@@ -270,8 +274,8 @@ button {
 	padding: 40px;
 
 	background: linear-gradient(
-			rgba(255, 255, 255, 0.75),
-			rgba(255, 255, 255, 0.75)
+			rgba(255, 255, 255, 0.7),
+			rgba(255, 255, 255, 0.7)
 		),
 		url("/assets/images/heading-mask.png");
 
@@ -371,6 +375,28 @@ details > summary::-webkit-details-marker {
 	}
 }
 
+@media (max-width: 768px) {
+	#hero {
+		padding-top: 80px;
+	}
+
+	#features {
+		padding-top: 40px;
+	}
+
+	#about {
+		padding: 40px 0;
+	}
+
+	#how-it-works {
+		padding: 40px 0;
+	}
+
+	#cta {
+		padding: 20px 0 40px;
+	}
+}
+
 @media (max-width: 580px) {
 	#faq {
 		padding: 40px 20px;
@@ -403,6 +429,10 @@ details > summary::-webkit-details-marker {
 
 	.user-features h2 {
 		font-size: 1.875rem;
+	}
+
+	.user-features li img {
+		width: 20px;
 	}
 
 	.user-image-container {
