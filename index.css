@@ -363,6 +363,17 @@ details > summary::-webkit-details-marker {
 	display: none;
 }
 
+.word-wrapper {
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: top;
+}
+
+.word {
+	display: inline-block;
+	transform-origin: bottom;
+}
+
 @media (max-width: 1199px) {
 	.cta-container {
 		margin: 0 20px;
