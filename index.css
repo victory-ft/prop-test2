@@ -78,7 +78,7 @@ button {
 	margin: 20px 0;
 }
 
-.hero-header span {
+.hero-header .hero-header-span {
 	display: block;
 	color: var(--primary);
 }
