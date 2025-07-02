@@ -59,7 +59,7 @@ button {
 	padding-bottom: 0;
 	margin-bottom: 0;
 
-	background: linear-gradient(
+	background-image: linear-gradient(
 			rgba(255, 255, 255, 0.7),
 			rgba(255, 255, 255, 0.7)
 		),
@@ -273,7 +273,7 @@ button {
 	margin: 0 auto;
 	padding: 40px;
 
-	background: linear-gradient(
+	background-image: linear-gradient(
 			rgba(255, 255, 255, 0.7),
 			rgba(255, 255, 255, 0.7)
 		),
