@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// --- NON-IMAGE ANIMATIONS (Run Immediately) ---
 
-	// Hero Text & Buttons (Image animation is now separate)
+	// Hero Text & Buttons
 	const heroHeader = document.querySelector("#hero .hero-header");
 	const heroParts = heroHeader.innerHTML.split(/(<[^>]+>)/g).filter(Boolean);
 	let heroNewHTML = "";
@@ -238,37 +238,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		ease: "power2.out",
 		stagger: 0.15,
 	});
-	const aboutUserDesigns = gsap.utils.toArray("#about .user-design");
-	if (aboutUserDesigns[0]) {
-		gsap.from(aboutUserDesigns[0].querySelector(".user-features"), {
-			scrollTrigger: {
-				trigger: aboutUserDesigns[0],
-				start: "top 80%",
-				toggleActions: "play none none none",
-			},
-			x: 100,
-			opacity: 0,
-			duration: 0.8,
-			ease: "power2.out",
-		});
-	}
-	if (aboutUserDesigns[1]) {
-		gsap.from(aboutUserDesigns[1].querySelector(".user-features"), {
-			scrollTrigger: {
-				trigger: aboutUserDesigns[1],
-				start: "top 80%",
-				toggleActions: "play none none none",
-			},
-			x: -100,
-			opacity: 0,
-			duration: 0.8,
-			ease: "power2.out",
-		});
-	}
 
 	// --- DECOUPLED IMAGE ANIMATIONS (Wait for their specific image to load) ---
 
-	// 1. Hero Image
+	// Hero Image
 	const heroImage = document.querySelector("#hero .hero-image-container");
 	imagesLoaded(heroImage, function () {
 		gsap.from(heroImage, {
@@ -280,41 +253,117 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
-	// 2. About Section Images
-	if (aboutUserDesigns[0]) {
-		const aboutImage1 = aboutUserDesigns[0].querySelector(
-			".user-image-container",
-		);
-		imagesLoaded(aboutImage1, function () {
-			gsap.from(aboutImage1, {
-				scrollTrigger: {
-					trigger: aboutUserDesigns[0],
-					start: "top 80%",
-					toggleActions: "play none none none",
-				},
-				x: -100,
-				opacity: 0,
-				duration: 0.8,
-				ease: "power2.out",
+	// --- RESPONSIVE ANIMATIONS FOR ABOUT SECTION ---
+	ScrollTrigger.matchMedia({
+		// --- Desktop View (Side-by-side) ---
+		"(min-width: 901px)": function () {
+			const userDesigns = gsap.utils.toArray("#about .user-design");
+
+			// Animate text parts immediately
+			if (userDesigns[0]) {
+				gsap.from(userDesigns[0].querySelector(".user-features"), {
+					scrollTrigger: {
+						trigger: userDesigns[0],
+						start: "top 80%",
+						toggleActions: "play none none none",
+					},
+					x: 100,
+					opacity: 0,
+					duration: 0.8,
+					ease: "power2.out",
+				});
+			}
+			if (userDesigns[1]) {
+				gsap.from(userDesigns[1].querySelector(".user-features"), {
+					scrollTrigger: {
+						trigger: userDesigns[1],
+						start: "top 80%",
+						toggleActions: "play none none none",
+					},
+					x: -100,
+					opacity: 0,
+					duration: 0.8,
+					ease: "power2.out",
+				});
+			}
+
+			// Animate image parts after they load
+			if (userDesigns[0]) {
+				const aboutImage1 = userDesigns[0].querySelector(
+					".user-image-container",
+				);
+				imagesLoaded(aboutImage1, function () {
+					gsap.from(aboutImage1, {
+						scrollTrigger: {
+							trigger: userDesigns[0],
+							start: "top 80%",
+							toggleActions: "play none none none",
+						},
+						x: -100,
+						opacity: 0,
+						duration: 0.8,
+						ease: "power2.out",
+						delay: 0.2,
+					});
+				});
+			}
+			if (userDesigns[1]) {
+				const aboutImage2 = userDesigns[1].querySelector(
+					".user-image-container",
+				);
+				imagesLoaded(aboutImage2, function () {
+					gsap.from(aboutImage2, {
+						scrollTrigger: {
+							trigger: userDesigns[1],
+							start: "top 80%",
+							toggleActions: "play none none none",
+						},
+						x: 100,
+						opacity: 0,
+						duration: 0.8,
+						ease: "power2.out",
+						delay: 0.2,
+					});
+				});
+			}
+		},
+
+		// --- Mobile View (Stacked) ---
+		"(max-width: 900px)": function () {
+			const userFeatures = gsap.utils.toArray("#about .user-features");
+			const userImages = gsap.utils.toArray("#about .user-image-container");
+
+			// Animate each text block when it scrolls into view
+			userFeatures.forEach((feature) => {
+				gsap.from(feature, {
+					scrollTrigger: {
+						trigger: feature,
+						start: "top 85%",
+						toggleActions: "play none none none",
+					},
+					y: 50,
+					opacity: 0,
+					duration: 0.8,
+					ease: "power2.out",
+				});
 			});
-		});
-	}
-	if (aboutUserDesigns[1]) {
-		const aboutImage2 = aboutUserDesigns[1].querySelector(
-			".user-image-container",
-		);
-		imagesLoaded(aboutImage2, function () {
-			gsap.from(aboutImage2, {
-				scrollTrigger: {
-					trigger: aboutUserDesigns[1],
-					start: "top 80%",
-					toggleActions: "play none none none",
-				},
-				x: 100,
-				opacity: 0,
-				duration: 0.8,
-				ease: "power2.out",
+
+			// Animate each image block when it scrolls into view, after it loads
+			userImages.forEach((image) => {
+				imagesLoaded(image, function () {
+					gsap.from(image, {
+						scrollTrigger: {
+							trigger: image,
+							start: "top 85%",
+							toggleActions: "play none none none",
+						},
+						y: 50,
+						opacity: 0,
+						duration: 0.8,
+						ease: "power2.out",
+					});
+				});
 			});
-		});
-	}
+		},
+	}); // End of matchMedia
 });
